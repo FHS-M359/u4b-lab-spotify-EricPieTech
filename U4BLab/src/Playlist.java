@@ -1,9 +1,11 @@
 import java.io.*;
 import java.util.*;
 public class Playlist{
-    static ArrayList<Song> songs = new ArrayList<>();
+    private static ArrayList<Song> songs = new ArrayList<>();
+    public Playlist(){
+    }
     public static void readSongs() throws FileNotFoundException{
-        Scanner inFile = new Scanner(new File("spotify_unique_years_artists.txt"));
+        Scanner inFile = new Scanner(new File("U4BLab/spotify_unique_years_artists.txt"));
         while(inFile.hasNextLine()){
             String[] temp = inFile.nextLine().split(",");
             Song tempSong = new Song(temp[0], temp[1], temp[2], Integer.parseInt(temp[3]), Integer.parseInt(temp[4]), temp[5]);
@@ -11,7 +13,11 @@ public class Playlist{
         }
         inFile.close();
     }
-    public void printList(ArrayList<Song> input){
-
+    public String toString() {
+        String output = "Title                     Artist                    Album                          Year  Genre\n";
+        output += "----------------------------------------------------------------------------------------------------\n";
+        for(Song s : songs)
+            output += s + "\n";
+        return (output);
     }
 }
