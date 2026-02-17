@@ -13,6 +13,18 @@ public class Playlist{
         }
         inFile.close();
     }
+    public static void sortByGenre(String input){
+        for(int i = songs.size()-1; i >= 0; i--)
+            if(!songs.get(i).getGenre().equalsIgnoreCase(input)){
+                songs.remove(i);
+            }
+    }
+    public static void sortByArtist(String direction){
+
+    }
+    public static void sortByReleaseYear(String direction){
+
+    }
     public String toString() {
         String output = "Title                     Artist                    Album                          Year  Genre\n";
         output += "----------------------------------------------------------------------------------------------------\n";
