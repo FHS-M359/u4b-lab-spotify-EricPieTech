@@ -15,9 +15,10 @@ public class Playlist{
     }
     public static void sortByGenre(String input){
         for(int i = songs.size()-1; i >= 0; i--)
-            if(!songs.get(i).getGenre().equalsIgnoreCase(input)){
+            if(!songs.get(i).getGenre().equalsIgnoreCase(input))
                 songs.remove(i);
-            }
+        if(songs.isEmpty())
+            System.out.println("There are no songs for the genre of " + input);
     }
     public static void sortByArtist(String direction){
 

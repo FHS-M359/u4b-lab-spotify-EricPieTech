@@ -10,8 +10,8 @@ public class SpotifyTester {
     private static final int quit = 7;
     private static boolean running = true;
     private static int choice = -1;
+    static Scanner inSys = new Scanner(System.in);
     public static void main(String[] args) throws FileNotFoundException {
-        Scanner inSys = new Scanner(System.in);
         while(running){
             System.out.println(" === Spotify Menu === \n1. Sort by artist (A -> Z)\n2. Sort by artist (Z -> A)");
             System.out.println("3. Sort by year (New -> Old)\n4. Sort by year (Old -> New)\n5. Sort by genre");
@@ -24,8 +24,10 @@ public class SpotifyTester {
             }
             if(choice < 1 || choice > 7)
                 System.out.println("Please enter a number between 1-7.");
-            runMenu();
+            if(choice >= 1 && choice <= 7)
+                runMenu();
         }
+        inSys.close();
     }
     private static void runMenu() throws FileNotFoundException {
         Playlist p = new Playlist();
@@ -47,9 +49,12 @@ public class SpotifyTester {
             System.out.println(p);
         }
         if (choice == genre) {
-            String type = "";
-            Playlist.sortByGenre(type);
-            System.out.println(p);
+            System.out.println("Enter genre to search by:");
+            inSys.nextLine();
+            Playlist.sortByGenre(inSys.nextLine());
+            if(p.toString().length() > 103){//fix
+                System.out.println(p);
+            }
         }
         if (choice == all)
             System.out.println(p);
