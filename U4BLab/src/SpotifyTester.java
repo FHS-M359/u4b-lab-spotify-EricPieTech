@@ -21,9 +21,10 @@ public class SpotifyTester {
             }catch (InputMismatchException e){
                 System.out.println("Invalid Input. Please enter numbers only.");
                 inSys.nextLine();
+                System.out.println();
             }
             if(choice < 1 || choice > 7)
-                System.out.println("Please enter a number between 1-7.");
+                System.out.println("Please enter a number between 1-7.\n");
             if(choice >= 1 && choice <= 7)
                 runMenu();
         }
@@ -33,28 +34,31 @@ public class SpotifyTester {
         Playlist p = new Playlist();
         Playlist.readSongs();
         if (choice == a_z) {
-            Playlist.sortByArtist("a-z");
+            Playlist.sortA_Z();
             System.out.println(p);
         }
         if (choice == z_a) {
-            Playlist.sortByArtist("z-a");
+            Playlist.sortZ_A();
             System.out.println(p);
         }
         if (choice == new_old) {
-            Playlist.sortByReleaseYear("new-old");
+            Playlist.sortNew_Old();
             System.out.println(p);
         }
         if (choice == old_new) {
-            Playlist.sortByReleaseYear("old-new");
+            Playlist.sortOld_New();
             System.out.println(p);
         }
         if (choice == genre) {
             System.out.println("Enter genre to search by:");
             inSys.nextLine();
             Playlist.sortByGenre(inSys.nextLine());
-            if(p.toString().length() > 103){//fix
+            int test = p.toString().length();
+            if(p.toString().length() > 196){
                 System.out.println(p);
             }
+            else
+                System.out.println();
         }
         if (choice == all)
             System.out.println(p);
