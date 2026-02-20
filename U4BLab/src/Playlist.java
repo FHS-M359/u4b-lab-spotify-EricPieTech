@@ -5,6 +5,7 @@ public class Playlist{
     public Playlist(){
     }
     public static void readSongs() throws FileNotFoundException{
+        songs = new ArrayList<>();
         Scanner inFile = new Scanner(new File("U4BLab/spotify_unique_years_artists.txt"));
         while(inFile.hasNextLine()){
             String[] temp = inFile.nextLine().split(",");
@@ -20,20 +21,29 @@ public class Playlist{
         if(songs.isEmpty())
             System.out.println("There are no " + input + " songs in the playlist.");
     }
-    public static void sortA_Z(){ //fix
+    public static void sortA_Z(){
         for(int i = 0; i < songs.size()-1; i++){
             int minIndex = i;
             for(int j = i+1; j < songs.size(); j++) {
-                String str1 = songs.get(i).getArtist().substring(0,1);
-                String str2 = songs.get(j).getArtist().substring(0,1);
-                if (str1.compareTo(str2) <= minIndex)
+                String str1 = songs.get(j).getArtist();
+                String str2 = songs.get(minIndex).getArtist();
+                if(str1.compareToIgnoreCase(str2) <= 0)
                     minIndex = j;
             }
             songs.set(minIndex, songs.set(i, songs.get(minIndex)));
         }
     }
     public static void sortZ_A(){
-
+        for(int i = 0; i < songs.size()-1; i++){
+            int minIndex = i;
+            for(int j = i+1; j < songs.size(); j++) {
+                String str1 = songs.get(j).getArtist();
+                String str2 = songs.get(minIndex).getArtist();
+                if(str1.compareToIgnoreCase(str2) >= 0)
+                    minIndex = j;
+            }
+            songs.set(minIndex, songs.set(i, songs.get(minIndex)));
+        }
     }
     public static void sortNew_Old(){
 
