@@ -46,10 +46,26 @@ public class Playlist{
         }
     }
     public static void sortNew_Old(){
-
+        for(int i = 1; i < songs.size(); i++){
+            Song temp = songs.get(i);
+            int pos = i;
+            while(pos > 0 && songs.get(pos-1).getYear() < temp.getYear()){
+                songs.set(pos, songs.get(pos-1));
+                pos--;
+            }
+            songs.set(pos, temp);
+        }
     }
     public static void sortOld_New(){
-
+        for(int i = 1; i < songs.size(); i++){
+            Song temp = songs.get(i);
+            int pos = i;
+            while(pos > 0 && songs.get(pos-1).getYear() > temp.getYear()){
+                songs.set(pos, songs.get(pos-1));
+                pos--;
+            }
+            songs.set(pos, temp);
+        }
     }
     public String toString() {
         String output = "Title                     Artist                    Album                          Year  Genre\n";

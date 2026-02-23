@@ -53,7 +53,6 @@ public class SpotifyTester {
             System.out.println("Enter genre to search by:");
             inSys.nextLine();
             Playlist.sortByGenre(inSys.nextLine());
-            int test = p.toString().length();
             if(p.toString().length() > 196){
                 System.out.println(p);
             }
