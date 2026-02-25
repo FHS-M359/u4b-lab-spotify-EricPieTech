@@ -30,6 +30,10 @@ public class SpotifyTester {
         }
         inSys.close();
     }
+    /**
+     * Helper method that runs different Playlist methods depending on the user's input
+     * @throws FileNotFoundException
+     */
     private static void runMenu() throws FileNotFoundException {
         Playlist p = new Playlist();
         Playlist.readSongs();

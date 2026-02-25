@@ -9,6 +9,10 @@ public class Song {
         this.year = year;
         this.genre = genre;
     }
+    /**
+     * Formats and returns the song object as a String
+     * @return the song as a properly formatted String
+     */
     public String toString(){
         return(String.format("%-25s %-25s %-30s %-5d %-10s", title, artist, album, year, genre));
     }
