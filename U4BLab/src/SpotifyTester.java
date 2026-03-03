@@ -58,9 +58,8 @@ public class SpotifyTester {
             inSys.nextLine();
             Playlist.sortByGenre(inSys.nextLine());
             //Checks if the list is empty and if it is, doesn't print it
-            if(p.toString().length() > 196){
+            if(p.toString().length() > 196)
                 System.out.println(p);
-            }
             else
                 System.out.println();
         }
